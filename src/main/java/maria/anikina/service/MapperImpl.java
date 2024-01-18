@@ -1,18 +1,13 @@
 package maria.anikina.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import maria.anikina.model.json.FindPersonInfo;
 import maria.anikina.model.json.IdentityCard;
 import maria.anikina.model.json.PersonInfo;
 import maria.anikina.model.json.PersonName;
-import maria.anikina.model.xml.ClientFindInfo;
 import maria.anikina.model.xml.ClientInfo;
 
 import java.io.File;
@@ -27,7 +22,7 @@ public class MapperImpl implements Mapper<ClientInfo> {
 	private XmlMapper xmlMapper;
 
 	@Override
-	public ClientInfo getFromXMLToObject( ) {
+	public ClientInfo getFromXMLToObject() {
 		ClientInfo clientInfo;
 		try {
 			String readContent = new String(Files.readAllBytes(Paths.get("ClientInfo.xml")));
