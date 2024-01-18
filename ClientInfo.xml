@@ -1,0 +1,13 @@
+<clientInfo>
+    <clientFindInfo>
+        <dul>
+            <documentType>99</documentType>
+            <firstName>firstName</firstName>
+            <lastName>lastName</lastName>
+            <secondName>secondName</secondName>
+            <number>645354</number>
+            <series>6200</series>
+        </dul>
+        <partyId>32</partyId>
+    </clientFindInfo>
+</clientInfo>
