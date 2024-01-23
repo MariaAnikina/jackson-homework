@@ -13,12 +13,12 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MapperImplTest {
-	private Mapper<ClientInfo> mapper;
+	private Serializer<ClientInfo> mapper;
 	private ClientInfo clientInfoClone;
 
 	@BeforeEach
 	void init() {
-		mapper = new MapperImpl(new ObjectMapper(), new XmlMapper());
+		mapper = new SerializerImpl(new ObjectMapper(), new XmlMapper());
 		clientInfoClone = new ClientInfo(new ClientFindInfo(
 				new Dul(99, "firstName", "lastName", "secondName",
 						645354, 6200), 32));

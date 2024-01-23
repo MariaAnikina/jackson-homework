@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @AllArgsConstructor
-public class MapperImpl implements Mapper<ClientInfo> {
+public class SerializerImpl implements Serializer<ClientInfo> {
 
 	private ObjectMapper objectMapper;
 	private XmlMapper xmlMapper;
@@ -35,7 +35,7 @@ public class MapperImpl implements Mapper<ClientInfo> {
 
 	@Override
 	public String createFromObjectJsonAndSaveFile(File file, ClientInfo clientInfo) {
-		PersonInfo personInfo = createPersonInfoFromClientInfo(clientInfo);
+		PersonInfo personInfo = Mapper.createPersonInfoFromClientInfo(clientInfo);
 		String personInfoJson;
 		try {
 			objectMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
@@ -46,27 +46,4 @@ public class MapperImpl implements Mapper<ClientInfo> {
 		}
 		return personInfoJson;
 	}
-
-	public PersonInfo createPersonInfoFromClientInfo(ClientInfo clientInfo) {
-		int partyId = clientInfo.getClientFindInfo().getPartyId();
-		IdentityCard identityCard = IdentityCard.builder()
-				.idType(clientInfo.getClientFindInfo().getDul().getDocumentType())
-				.idNum(clientInfo.getClientFindInfo().getDul().getNumber())
-				.idSeries(clientInfo.getClientFindInfo().getDul().getSeries())
-				.build();
-		PersonName personName = PersonName.builder()
-				.firstName(clientInfo.getClientFindInfo().getDul().getFirstName())
-				.lastName(clientInfo.getClientFindInfo().getDul().getLastName())
-				.middleName(clientInfo.getClientFindInfo().getDul().getSecondName())
-				.build();
-		FindPersonInfo findPersonInfo = FindPersonInfo.builder()
-				.personName(personName)
-				.identityCard(identityCard)
-				.partyID(partyId)
-				.build();
-		return PersonInfo.builder()
-				.findPersonInfo(findPersonInfo)
-				.build();
-	}
-
 }
