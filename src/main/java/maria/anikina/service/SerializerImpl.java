@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.AllArgsConstructor;
-import maria.anikina.model.json.FindPersonInfo;
-import maria.anikina.model.json.IdentityCard;
 import maria.anikina.model.json.PersonInfo;
-import maria.anikina.model.json.PersonName;
 import maria.anikina.model.xml.ClientInfo;
 
 import java.io.File;
